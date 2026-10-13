@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nivelEducativo": "Primaria",
+    "modalidad": "Regular",
+    "turno": "Matutino",
+    "gradoAno": "1er Grado",
+    "seccion": "A",
+    "cupoDisponible": 30
+  },
+  {
+    "id": 2,
+    "nivelEducativo": "Primaria",
+    "modalidad": "Regular",
+    "turno": "Matutino",
+    "gradoAno": "2do Grado",
+    "seccion": "A",
+    "cupoDisponible": 30
+  },
+  {
+    "id": 3,
+    "nivelEducativo": "Secundaria",
+    "modalidad": "Regular",
+    "turno": "Matutino",
+    "gradoAno": "7mo Grado",
+    "seccion": "A",
+    "cupoDisponible": 35
+  }
+]
