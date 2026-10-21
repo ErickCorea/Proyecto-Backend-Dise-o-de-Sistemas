@@ -13,3 +13,4 @@
 # Archivos de sistema y logs
 npm-debug.log*
 .DS_Store
+/generated/prisma

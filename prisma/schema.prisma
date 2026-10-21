@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// 1. Cuenta de acceso al sistema (Login / Registro del Flujograma)
+model Usuario {
+  id         Int         @id @default(autoincrement())
+  email      String      @unique
+  password   String
+  nombre     String?
+  rol        String      @default("TUTOR")
+  creadoEn   DateTime    @default(now())
+  matriculas Matricula[]
+}
+
+// 2. Parte 1 del Formulario HTML: DATOS PERSONALES DEL ESTUDIANTE
+model Estudiante {
+  id                 Int         @id @default(autoincrement())
+  telefono           String
+  direccion          String
+  nombre             String
+  segundoNombre      String?
+  apellido1          String
+  apellido2          String?
+  fechaNacimiento    String
+  genero             String
+  peso               Float
+  talla              Float
+  nacionalidad       String
+  paisNacimiento     String
+  departamento       String
+  municipio          String
+  lenguaMaterna      String
+  discapacidad       String
+  territorioIndigena String?
+  habitaIndigena     String?
+  tutorId            Int
+  tutor              Tutor       @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  matriculas         Matricula[]
+}
+
+// 3. Parte 2 del Formulario HTML: DATOS PERSONALES DE LOS PADRES O TUTOR
+model Tutor {
+  id            Int          @id @default(autoincrement())
+  nombreMadre   String?
+  cedulaMadre   String?
+  telefonoMadre String?
+  nombrePadre   String?
+  cedulaPadre   String?
+  telefonoPadre String?
+  nombreTutor   String?
+  cedulaTutor   String?
+  telefonoTutor String?
+  estudiantes   Estudiante[]
+}
+
+// 4. Parte 3 del Formulario HTML: DATOS ACADÉMICOS Y ESTADO DE MATRÍCULA
+model Matricula {
+  id                 Int        @id @default(autoincrement())
+  codigoMatricula    String     @unique
+  tipoMatricula      String     @default("Nuevo ingreso") // "Nuevo ingreso" o "Reingreso"
+  aceptoReglamento   Boolean    @default(true)
+  fechaMatricula     String
+  departamentoCentro String
+  codigoUnico        String     @default("14432")
+  codigoCentro       String     @default("22224")
+  nombreCentro       String     @default("Colegio Soldado de la Cruz")
+  nivelEducativo     String
+  modalidad          String
+  turno              String
+  grado              String
+  seccion            String
+  repitente          String
+  estadoMatricula    String     @default("MATRICULADO")
+  creadoEn           DateTime   @default(now())
+  estudianteId       Int
+  estudiante         Estudiante @relation(fields: [estudianteId], references: [id], onDelete: Cascade)
+  usuarioId          Int?
+  usuario            Usuario?   @relation(fields: [usuarioId], references: [id])
+}
