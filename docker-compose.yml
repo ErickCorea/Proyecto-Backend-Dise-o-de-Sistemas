@@ -1,0 +1,16 @@
+services:
+  backend-matricula:
+    build: .
+    container_name: soldado_cruz_backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DATABASE_URL=file:./dev.db
+      - JWT_SECRET=soldado-de-la-cruz-secret-key-2026
+    volumes:
+      - sqlite_data:/app/prisma
+    restart: unless-stopped
+
+volumes:
+  sqlite_data:
