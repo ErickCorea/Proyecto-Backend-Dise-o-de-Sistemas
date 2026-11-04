@@ -1,0 +1,4 @@
+En este proyecto de página web, las imágenes utilizadas han sido vinculadas 
+a través de enlaces en línea para asegurar una carga eficiente y rápida de los recursos. 
+Sin embargo, para mayor comodidad y con el fin de facilitar posibles modificaciones futuras, 
+he incluido copias locales de todas las imágenes utilizadas en una carpeta dentro del proyecto.

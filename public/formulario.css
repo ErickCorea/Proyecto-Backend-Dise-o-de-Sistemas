@@ -1,0 +1,230 @@
+/* ===== Variables ===== */
+:root {
+    --green: #118652;
+    --green-dark: #083a23;
+    --green-soft: #e7f4ed;
+    --bg: #eef2f0;
+    --card: #ffffff;
+    --text: #1b2620;
+    --muted: #5b6862;
+    --border: #c9d3ce;
+    --error: #c62828;
+    --error-soft: #fdeeee;
+    --radius: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ===== Base ===== */
+body {
+    font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.45;
+    -webkit-text-size-adjust: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 20px 16px 48px;
+}
+
+h2, h3, h4 { color: var(--text); margin: 0; }
+h2 { text-align: center; font-size: 1.9rem; font-weight: 700; margin-top: 12px; }
+h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    border-bottom: 3px solid var(--green);
+}
+h4 { font-size: 1rem; font-weight: 700; color: var(--green-dark); margin-bottom: 10px; }
+
+.intro { text-align: center; color: var(--muted); margin: 6px 0 22px; }
+.star { color: var(--error); font-weight: 700; }
+
+/* ===== Barra de avance ===== */
+.progress {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, .96);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px 10px;
+}
+.progress-info {
+    max-width: 820px;
+    margin: 0 auto 6px;
+    display: flex;
+    justify-content: space-between;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+.progress-bar {
+    max-width: 820px;
+    margin: 0 auto;
+    height: 8px;
+    border-radius: 99px;
+    background: var(--green-soft);
+    overflow: hidden;
+}
+#progressFill {
+    height: 100%;
+    width: 0;
+    background: var(--green);
+    transition: width .3s ease;
+}
+
+/* ===== Tarjetas y rejilla ===== */
+form { display: flex; flex-direction: column; gap: 20px; }
+
+.card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 10px rgba(8, 58, 35, .08);
+    padding: 24px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 20px;
+}
+.full { grid-column: 1 / -1; }
+
+.sub { margin-top: 20px; padding: 16px; background: #f7faf8; border: 1px solid #e0e8e3; border-radius: var(--radius); }
+.sub:first-of-type { margin-top: 0; }
+.note { margin: 0 0 14px; color: var(--muted); font-size: .95rem; }
+
+/* ===== Campos ===== */
+.field { display: flex; flex-direction: column; min-width: 0; }
+
+label {
+    font-weight: 600;
+    font-size: .95rem;
+    color: var(--text);
+    text-align: left;
+    margin-bottom: 6px;
+}
+.field:has([required]):not(.ro) > label:first-child::after {
+    content: " *";
+    color: var(--error);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 11px 12px;
+    font: inherit;
+    font-size: 1rem; /* 16px: evita el zoom automático en iOS */
+    color: var(--text);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color .2s, box-shadow .2s;
+}
+input[type="radio"] { width: auto; }
+textarea { resize: vertical; min-height: 84px; }
+select:disabled { background: #f1f4f2; color: var(--muted); cursor: not-allowed; }
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(17, 134, 82, .2);
+    outline: none;
+}
+
+input[readonly] { background: #f1f4f2; color: var(--muted); cursor: not-allowed; }
+
+.hint { margin-top: 5px; color: var(--muted); font-size: .82rem; }
+.error { margin-top: 5px; color: var(--error); font-size: .85rem; font-weight: 600; }
+.error:empty { display: none; }
+
+.field.invalid input,
+.field.invalid select,
+.field.invalid textarea { border-color: var(--error); background: var(--error-soft); }
+.field.invalid input:focus,
+.field.invalid select:focus,
+.field.invalid textarea:focus { box-shadow: 0 0 0 3px rgba(198, 40, 40, .2); }
+
+.group-error {
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: var(--error-soft);
+    border: 1px solid var(--error);
+    color: var(--error);
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ===== Opciones tipo botón (radio) ===== */
+.options { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { position: relative; margin: 0; cursor: pointer; }
+.chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chip span {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    background: #fff;
+    font-weight: 600;
+    transition: background .2s, color .2s, border-color .2s;
+}
+.chip:hover span { border-color: var(--green); }
+.chip input:checked + span { background: var(--green); border-color: var(--green); color: #fff; }
+.chip input:focus-visible + span { outline: 3px solid rgba(17, 134, 82, .4); outline-offset: 2px; }
+.field.invalid .chip span { border-color: var(--error); }
+
+/* ===== Botón y mensaje de éxito ===== */
+button {
+    margin-top: 4px;
+    padding: 14px;
+    min-height: 52px;
+    width: 100%;
+    background: var(--green);
+    border: none;
+    border-radius: var(--radius);
+    color: #fff;
+    font: inherit;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s;
+}
+button:hover { background: var(--green-dark); }
+button:focus-visible { outline: 3px solid rgba(17, 134, 82, .4); outline-offset: 3px; }
+
+.success {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    background: var(--green-soft);
+    border: 1px solid var(--green);
+    color: var(--green-dark);
+    font-weight: 700;
+    text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+    h2 { font-size: 1.5rem; }
+    .container { padding: 14px 10px 40px; }
+    .card { padding: 16px; }
+    .sub { padding: 12px; }
+    .grid { grid-template-columns: 1fr; gap: 16px; }
+    .full { grid-column: auto; }
+    .chip span { padding: 10px 14px; }
+}
+
+@media (max-width: 380px) {
+    h3 { font-size: .95rem; }
+    label { font-size: .9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+}

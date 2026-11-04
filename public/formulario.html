@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Matrícula</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="formulario.css">
+</head>
+<body>
+    <div class="progress" aria-hidden="true">
+        <div class="progress-info"><span>Avance del formulario</span><span id="progressText">0%</span></div>
+        <div class="progress-bar"><div id="progressFill"></div></div>
+    </div>
+
+    <div class="container">
+        <h2>Formulario de Matrícula</h2>
+        <p class="intro">Los campos marcados con <span class="star">*</span> son obligatorios.</p>
+
+        <div id="successMsg" class="success" role="status" hidden>
+            ✔ ¡Formulario enviado con éxito!
+        </div>
+
+        <form id="matriculaForm" novalidate>
+            <!-- DATOS PERSONALES DEL ESTUDIANTE -->
+            <section class="card">
+                <h3>DATOS PERSONALES DEL ESTUDIANTE</h3>
+                <div class="grid">
+                    <div class="field">
+                        <label for="nombre">Primer Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" autocomplete="given-name" required>
+                    </div>
+                    <div class="field">
+                        <label for="segundoNombre">Segundo Nombre:</label>
+                        <input type="text" id="segundoNombre" name="segundoNombre">
+                    </div>
+                    <div class="field">
+                        <label for="apellido1">Primer Apellido:</label>
+                        <input type="text" id="apellido1" name="apellido1" autocomplete="family-name" required>
+                    </div>
+                    <div class="field">
+                        <label for="apellido2">Segundo Apellido:</label>
+                        <input type="text" id="apellido2" name="apellido2">
+                    </div>
+                    <div class="field">
+                        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+                        <small class="hint" id="edadHint"></small>
+                    </div>
+                    <div class="field">
+                        <label for="genero">Género:</label>
+                        <select id="genero" name="genero" required>
+                            <option value="">Seleccione el género</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Masculino">Masculino</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="peso">Peso (kg):</label>
+                        <input type="number" id="peso" name="peso" inputmode="decimal" min="5" max="200" step="0.1" placeholder="Ejemplo: 32.5" required>
+                    </div>
+                    <div class="field">
+                        <label for="talla">Talla (cm):</label>
+                        <input type="number" id="talla" name="talla" inputmode="numeric" min="40" max="220" step="1" placeholder="Ejemplo: 135" required>
+                    </div>
+                    <div class="field">
+                        <label for="nacionalidad">Nacionalidad:</label>
+                        <input type="text" id="nacionalidad" name="nacionalidad" placeholder="Ejemplo: Nicaragüense" required>
+                    </div>
+                    <div class="field">
+                        <label for="paisNacimiento">País de Nacimiento:</label>
+                        <input type="text" id="paisNacimiento" name="paisNacimiento" placeholder="Ejemplo: Nicaragua" required>
+                    </div>
+                    <div class="field">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" inputmode="numeric" maxlength="8" placeholder="Ejemplo: 88888888" autocomplete="tel" required>
+                    </div>
+                    <div class="field">
+                        <label for="lenguaMaterna">Lengua Materna:</label>
+                        <select id="lenguaMaterna" name="lenguaMaterna" required>
+                            <option value="Español">Español</option>
+                            <option value="Miskitu">Miskitu</option>
+                            <option value="Mayangna">Mayangna</option>
+                            <option value="Garífuna">Garífuna</option>
+                            <option value="Inglés">Inglés</option>
+                            <option value="Ulwa">Ulwa</option>
+                            <option value="Rama">Rama</option>
+                            <option value="Creole">Creole</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="departamento">Departamento de Residencia:</label>
+                        <select id="departamento" name="departamento" required>
+                            <option value="">Seleccione un departamento</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="municipio">Municipio/Distrito:</label>
+                        <select id="municipio" name="municipio" required disabled>
+                            <option value="">Primero seleccione un departamento</option>
+                        </select>
+                    </div>
+                    <div class="field full">
+                        <label for="direccion">Dirección:</label>
+                        <textarea id="direccion" name="direccion" rows="3" autocomplete="street-address" placeholder="Barrio, calle, referencia y número de casa" required></textarea>
+                    </div>
+                    <div class="field full">
+                        <label for="discapacidad">Discapacidad (según informe médico):</label>
+                        <select id="discapacidad" name="discapacidad" required>
+                            <option value="Ninguna">Ninguna</option>
+                            <option value="Intelectual">Intelectual</option>
+                            <option value="Autismo">Autismo</option>
+                            <option value="Hipoacusia">Hipoacusia</option>
+                            <option value="Baja Visión">Baja Visión</option>
+                            <option value="Multidiscapacidad">Multidiscapacidad</option>
+                            <option value="Físico Motora">Físico Motora</option>
+                            <option value="Sordo">Sordo</option>
+                            <option value="Ciego">Ciego</option>
+                            <option value="Sordo-Ciego">Sordo-Ciego</option>
+                        </select>
+                    </div>
+                    <div class="field full">
+                        <label for="territorioIndigena">¿El estudiante pertenece a territorio indígena? ¿Cuál?:</label>
+                        <input type="text" id="territorioIndigena" name="territorioIndigena" placeholder="Déjelo vacío si no aplica">
+                    </div>
+                    <div class="field full">
+                        <label for="habitaIndigena">¿El estudiante habita en territorio indígena? ¿Cuál?:</label>
+                        <input type="text" id="habitaIndigena" name="habitaIndigena" placeholder="Déjelo vacío si no aplica">
+                        <small class="hint">Se completa con la respuesta anterior; puede cambiarla.</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DATOS PERSONALES DE LOS PADRES O TUTOR -->
+            <section class="card">
+                <h3>DATOS PERSONALES DE LOS PADRES O TUTOR</h3>
+                <p class="note">Complete los tres datos de al menos una persona (madre, padre o tutor).</p>
+                <p class="group-error" id="error-message" role="alert" hidden>Debe completar al menos un conjunto de datos (madre, padre o tutor).</p>
+
+                <div class="sub">
+                    <h4>Madre</h4>
+                    <div class="grid">
+                        <div class="field full">
+                            <label for="nombreMadre">Nombres y Apellidos de la madre:</label>
+                            <input type="text" id="nombreMadre" name="nombreMadre" data-group="Madre">
+                        </div>
+                        <div class="field">
+                            <label for="cedulaMadre">Número de cédula de la madre:</label>
+                            <input type="text" id="cedulaMadre" name="cedulaMadre" data-group="Madre" data-cedula placeholder="Ejemplo: 001-234567-8910A" maxlength="16">
+                        </div>
+                        <div class="field">
+                            <label for="telefonoMadre">Teléfono de la madre (solo números):</label>
+                            <input type="tel" id="telefonoMadre" name="telefonoMadre" data-group="Madre" inputmode="numeric" maxlength="8" placeholder="Ejemplo: 88888888">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub">
+                    <h4>Padre</h4>
+                    <div class="grid">
+                        <div class="field full">
+                            <label for="nombrePadre">Nombres y Apellidos del padre:</label>
+                            <input type="text" id="nombrePadre" name="nombrePadre" data-group="Padre">
+                        </div>
+                        <div class="field">
+                            <label for="cedulaPadre">Número de cédula del padre:</label>
+                            <input type="text" id="cedulaPadre" name="cedulaPadre" data-group="Padre" data-cedula placeholder="Ejemplo: 001-234567-8910A" maxlength="16">
+                        </div>
+                        <div class="field">
+                            <label for="telefonoPadre">Teléfono del padre (solo números):</label>
+                            <input type="tel" id="telefonoPadre" name="telefonoPadre" data-group="Padre" inputmode="numeric" maxlength="8" placeholder="Ejemplo: 88888888">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub">
+                    <h4>Tutor</h4>
+                    <div class="grid">
+                        <div class="field full">
+                            <label for="nombreTutor">Nombres y Apellidos del tutor:</label>
+                            <input type="text" id="nombreTutor" name="nombreTutor" data-group="Tutor">
+                        </div>
+                        <div class="field">
+                            <label for="cedulaTutor">Número de cédula del tutor:</label>
+                            <input type="text" id="cedulaTutor" name="cedulaTutor" data-group="Tutor" data-cedula placeholder="Ejemplo: 001-234567-8910A" maxlength="16">
+                        </div>
+                        <div class="field">
+                            <label for="telefonoTutor">Teléfono del tutor (solo números):</label>
+                            <input type="tel" id="telefonoTutor" name="telefonoTutor" data-group="Tutor" inputmode="numeric" maxlength="8" placeholder="Ejemplo: 88888888">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DATOS ACADÉMICOS DEL ESTUDIANTE -->
+            <section class="card">
+                <h3>DATOS ACADÉMICOS DEL ESTUDIANTE</h3>
+                <div class="grid">
+                    <div class="field">
+                        <label for="fechaMatricula">Fecha de matrícula del estudiante:</label>
+                        <input type="date" id="fechaMatricula" name="fechaMatricula" required>
+                    </div>
+                    <div class="field">
+                        <label for="departamentoCentro">Departamento:</label>
+                        <select id="departamentoCentro" name="departamentoCentro" required>
+                            <option value="">Seleccione un departamento</option>
+                        </select>
+                        <small class="hint">Se completa con el departamento de residencia; cámbielo si el centro está en otro.</small>
+                    </div>
+                    <div class="field ro">
+                        <label for="codigoUnico">Código único del establecimiento:</label>
+                        <input type="text" id="codigoUnico" name="codigoUnico" value="14432" readonly required>
+                    </div>
+                    <div class="field ro">
+                        <label for="codigoCentro">Código del Centro Educativo:</label>
+                        <input type="text" id="codigoCentro" name="codigoCentro" value="22224" readonly required>
+                    </div>
+                    <div class="field ro full">
+                        <label for="nombreCentro">Nombre del centro educativo:</label>
+                        <input type="text" id="nombreCentro" name="nombreCentro" value="Colegio Soldado de la Cruz" readonly required>
+                    </div>
+                    <div class="field">
+                        <label for="nivelEducativo">Nivel educativo:</label>
+                        <select id="nivelEducativo" name="nivelEducativo" required>
+                            <option value="">Seleccione un nivel</option>
+                            <option value="Educación Inicial">Educación Inicial</option>
+                            <option value="Educación Primaria">Educación Primaria</option>
+                            <option value="Educación Secundaria">Educación Secundaria</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="modalidad">Modalidad:</label>
+                        <select id="modalidad" name="modalidad" required>
+                            <option value="">Seleccione una modalidad</option>
+                            <option value="Preescolar-formal">Preescolar-formal</option>
+                            <option value="Primaria">Primaria</option>
+                            <option value="Secundaria">Secundaria</option>
+                        </select>
+                        <small class="hint">Se completa según el nivel educativo.</small>
+                    </div>
+                    <div class="field">
+                        <label for="grado">Nivel/Grado/Año/Ciclo/Grupo:</label>
+                        <select id="grado" name="grado" required disabled>
+                            <option value="">Primero seleccione el nivel educativo</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="seccion">Sección:</label>
+                        <select id="seccion" name="seccion">
+                            <option value="Por asignar" selected>Asignada por el maestro</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <small class="hint">El maestro asigna la sección. Déjelo así si aún no se ha definido.</small>
+                    </div>
+                    <div class="field full" role="radiogroup" aria-labelledby="lblTurno">
+                        <label id="lblTurno">Turno:</label>
+                        <div class="options">
+                            <label class="chip"><input type="radio" name="turno" value="Matutino" required checked><span>Matutino</span></label>
+                            <label class="chip"><input type="radio" name="turno" value="Vespertino"><span>Vespertino</span></label>
+                            <label class="chip"><input type="radio" name="turno" value="Nocturno"><span>Nocturno</span></label>
+                            <label class="chip"><input type="radio" name="turno" value="Sabatino"><span>Sabatino</span></label>
+                            <label class="chip"><input type="radio" name="turno" value="Dominical"><span>Dominical</span></label>
+                            <label class="chip"><input type="radio" name="turno" value="Encuentro Quincenal"><span>Encuentro Quincenal</span></label>
+                        </div>
+                    </div>
+                    <div class="field full" role="radiogroup" aria-labelledby="lblRepitente">
+                        <label id="lblRepitente">¿Es repitente?:</label>
+                        <div class="options">
+                            <label class="chip"><input type="radio" name="repitente" value="Si" required><span>Sí</span></label>
+                            <label class="chip"><input type="radio" name="repitente" value="No"><span>No</span></label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Botón de Registrar -->
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+
+    <script src="formulario.js"></script>
+</body>
+</html>

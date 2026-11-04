@@ -1,0 +1,175 @@
+:root {
+  --verde: #118652;
+  --verde-osc: #083a23;
+  --verde-claro: #e7f4ed;
+  --papel: #fbfaf6;
+  --texto: #232b27;
+  --suave: #5b6862;
+  --borde: #d9dfdb;
+  --dorado: #a98a3d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, var(--verde) 0, var(--verde-osc) 100%) fixed;
+  color: var(--texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 28px 14px;
+  -webkit-text-size-adjust: 100%;
+}
+
+.contenedor-card {
+  background: var(--papel);
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 36px 40px 40px;
+  border-radius: 10px;
+  border-top: 5px solid var(--dorado);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, .3);
+}
+
+/* Encabezado */
+.encabezado { text-align: center; margin-bottom: 22px; }
+.logo { width: 84px; height: auto; margin-bottom: 8px; }
+.institucion { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-weight: 700; color: var(--verde-osc); letter-spacing: .02em; }
+.lema { font-size: .85rem; color: var(--dorado); font-weight: 700; margin-bottom: 12px; }
+.encabezado h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.1rem;
+  color: #1d1d1d;
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--borde);
+}
+.encabezado p:last-child { color: var(--suave); font-size: .95rem; }
+
+/* Avance fijo */
+.estado {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--papel);
+  padding: 10px 0 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--borde);
+}
+.estado-texto { display: flex; justify-content: space-between; font-size: .85rem; font-weight: 700; color: var(--suave); margin-bottom: 6px; }
+.barra { height: 8px; border-radius: 99px; background: var(--verde-claro); overflow: hidden; }
+#barraRelleno { height: 100%; width: 0; background: var(--verde); transition: width .3s ease; }
+
+/* Preámbulo */
+.preambulo { font-size: 1rem; text-align: justify; margin-bottom: 22px; }
+.blanco { display: inline-block; min-width: 13em; border-bottom: 1px solid var(--suave); color: var(--suave); font-size: .8rem; text-align: center; line-height: 1.2; }
+.blanco.corto { min-width: 6em; }
+
+/* Cláusulas */
+.seccion-regla {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--borde);
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  transition: border-color .25s, background .25s;
+}
+.seccion-regla.aceptada { border-left-color: var(--verde); background: #f6fbf8; }
+.seccion-regla h4 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--verde-osc);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+.num {
+  flex: none;
+  width: 30px; height: 30px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--dorado);
+  border-radius: 50%;
+  font-family: 'Nunito', sans-serif;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--dorado);
+}
+.seccion-regla p { font-size: .97rem; color: #38433d; text-align: justify; margin-bottom: 10px; hyphens: auto; }
+.sub { font-weight: 700; color: var(--verde-osc); text-decoration: underline; }
+.cierre { border-left-color: var(--dorado); }
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--borde);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--verde);
+  cursor: pointer;
+}
+.check-item input { flex: none; width: 22px; height: 22px; accent-color: var(--verde); cursor: pointer; }
+
+/* Avisos finales */
+.aviso-final {
+  margin: 20px 0 8px;
+  padding: 14px 16px;
+  text-align: center;
+  font-weight: 700;
+  color: #7a1f1f;
+  background: #fbeeee;
+  border: 1px solid #d9a3a3;
+  border-radius: 6px;
+}
+.nota-firma { text-align: center; font-size: .85rem; color: var(--suave); margin-bottom: 22px; }
+
+/* Documentos */
+.lista-documentos { margin: 15px 0 20px 22px; line-height: 1.9; font-size: 1rem; }
+.lista-documentos li::marker { color: var(--verde); }
+.nota-informativa {
+  background: var(--verde-claro);
+  border: 1px solid var(--verde);
+  color: #0d683f;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: .95rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Botón */
+.btn-principal {
+  width: 100%;
+  min-height: 52px;
+  padding: 13px;
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font: 700 1.05rem 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-principal:hover:not(:disabled) { background: var(--verde-osc); }
+.btn-principal:focus-visible, .check-item input:focus-visible { outline: 3px solid rgba(169, 138, 61, .6); outline-offset: 2px; }
+.btn-principal:disabled { background: #b5bdb8; cursor: not-allowed; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  body { padding: 0; }
+  .contenedor-card { border-radius: 0; padding: 24px 16px 30px; }
+  .encabezado h2 { font-size: 1.7rem; }
+  .seccion-regla { padding: 14px; }
+  .seccion-regla h4 { font-size: 1.1rem; }
+  .seccion-regla p, .preambulo { text-align: left; font-size: .95rem; }
+  .blanco { min-width: 9em; }
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
