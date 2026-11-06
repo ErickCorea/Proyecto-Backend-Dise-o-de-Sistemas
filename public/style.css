@@ -962,8 +962,10 @@ p {
 
 /* ===== Buttons Css ===== */
 .header-eight .primary-btn {
-  background: var(--primary);
-  color: var(--white);
+  background-color: #dbbb25; 
+  color: #1d1d1d;
+  /* background: var(--primary);
+  color: var(--white); */
   box-shadow: var(--shadow-2);
 }
 .header-eight .active.primary-btn, .header-eight .primary-btn:hover, .header-eight .primary-btn:focus {
