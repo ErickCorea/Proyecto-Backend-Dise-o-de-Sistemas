@@ -1044,9 +1044,11 @@ p {
 .header-eight .button {
   margin-top: 40px;
 }
+
+/* BOTON MATRICULA */
 .header-eight .primary-btn {
   margin-right: 12px;
-  background-color: var(--white);
+  background-color: var(--black);
   color: #118652;
   border: 1px solid transparent;
 }
